@@ -1,0 +1,4 @@
+/data/BrnoCannyProject/canny_project/build/CMakeFiles/rebuild_cache.dir
+/data/BrnoCannyProject/canny_project/build/CMakeFiles/edit_cache.dir
+/data/BrnoCannyProject/canny_project/build/CMakeFiles/canny_benchmark.dir
+/data/BrnoCannyProject/canny_project/build/CMakeFiles/canny_server.dir
