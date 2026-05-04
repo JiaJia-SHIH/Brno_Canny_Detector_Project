@@ -4,7 +4,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/canny.dir/src/hysteresis.cpp.o"
   "CMakeFiles/canny.dir/src/main.cpp.o"
   "CMakeFiles/canny.dir/src/nms.cpp.o"
-  "CMakeFiles/canny.dir/src/server.cpp.o"
   "CMakeFiles/canny.dir/src/threadpool.cpp.o"
   "CMakeFiles/canny.dir/src/threshold.cpp.o"
   "CMakeFiles/canny.dir/src/utils.cpp.o"

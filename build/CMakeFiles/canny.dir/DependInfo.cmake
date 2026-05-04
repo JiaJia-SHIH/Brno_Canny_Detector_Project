@@ -9,7 +9,6 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/data/BrnoCannyProject/canny_project/src/hysteresis.cpp" "/data/BrnoCannyProject/canny_project/build/CMakeFiles/canny.dir/src/hysteresis.cpp.o"
   "/data/BrnoCannyProject/canny_project/src/main.cpp" "/data/BrnoCannyProject/canny_project/build/CMakeFiles/canny.dir/src/main.cpp.o"
   "/data/BrnoCannyProject/canny_project/src/nms.cpp" "/data/BrnoCannyProject/canny_project/build/CMakeFiles/canny.dir/src/nms.cpp.o"
-  "/data/BrnoCannyProject/canny_project/src/server.cpp" "/data/BrnoCannyProject/canny_project/build/CMakeFiles/canny.dir/src/server.cpp.o"
   "/data/BrnoCannyProject/canny_project/src/threadpool.cpp" "/data/BrnoCannyProject/canny_project/build/CMakeFiles/canny.dir/src/threadpool.cpp.o"
   "/data/BrnoCannyProject/canny_project/src/threshold.cpp" "/data/BrnoCannyProject/canny_project/build/CMakeFiles/canny.dir/src/threshold.cpp.o"
   "/data/BrnoCannyProject/canny_project/src/utils.cpp" "/data/BrnoCannyProject/canny_project/build/CMakeFiles/canny.dir/src/utils.cpp.o"

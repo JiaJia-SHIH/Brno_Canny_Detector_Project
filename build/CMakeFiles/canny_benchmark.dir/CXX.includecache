@@ -6,20 +6,16 @@
 
 #IncludeRegexTransform: 
 
-../src/Benchmark/benchmark.hpp
-opencv2/opencv.hpp
--
-string
+/data/BrnoCannyProject/canny_project/src/threshold.cpp
+threshold.hpp
+/data/BrnoCannyProject/canny_project/src/threshold.hpp
+algorithm
 -
 vector
 -
-chrono
--
 
-/data/BrnoCannyProject/canny_project/src/Benchmark/benchmark_main.cpp
-Benchmark/benchmark.hpp
-/data/BrnoCannyProject/canny_project/src/Benchmark/Benchmark/benchmark.hpp
-iostream
+/data/BrnoCannyProject/canny_project/src/threshold.hpp
+opencv2/opencv.hpp
 -
 
 /usr/include/opencv4/opencv2/calib3d.hpp

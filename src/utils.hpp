@@ -6,3 +6,6 @@ cv::Mat hconcatManually(const std::vector<cv::Mat>& a, const std::vector<cv::Mat
 cv::Mat grayToBgrManually(const cv::Mat& gray);
 cv::Mat bgrToGrayManually(const cv::Mat& bgr);
 cv::Mat orientationToColorManually(const cv::Mat& orientation, const cv::Mat& magnitude);
+
+// Visualization for auto-thresholding 
+cv::Mat visualizeHistogramWithThresholds(const cv::Mat& nms, float lowThreshold, float highThreshold);
