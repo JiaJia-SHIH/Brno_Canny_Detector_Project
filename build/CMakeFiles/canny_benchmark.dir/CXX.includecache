@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/data/BrnoCannyProject/canny_project/src/benchmark.hpp
+../src/Benchmark/benchmark.hpp
 opencv2/opencv.hpp
 -
 string
@@ -16,9 +16,9 @@ vector
 chrono
 -
 
-/data/BrnoCannyProject/canny_project/src/benchmark_main.cpp
-benchmark.hpp
-/data/BrnoCannyProject/canny_project/src/benchmark.hpp
+/data/BrnoCannyProject/canny_project/src/Benchmark/benchmark_main.cpp
+Benchmark/benchmark.hpp
+/data/BrnoCannyProject/canny_project/src/Benchmark/Benchmark/benchmark.hpp
 iostream
 -
 

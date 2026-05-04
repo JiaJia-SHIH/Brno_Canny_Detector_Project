@@ -53,6 +53,7 @@ CMAKE_BINARY_DIR = /data/BrnoCannyProject/canny_project/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
+all: CMakeFiles/canny_evaluator.dir/all
 all: CMakeFiles/canny_benchmark.dir/all
 all: CMakeFiles/canny_server.dir/all
 
@@ -64,10 +65,38 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
+clean: CMakeFiles/canny_evaluator.dir/clean
 clean: CMakeFiles/canny_benchmark.dir/clean
 clean: CMakeFiles/canny_server.dir/clean
 
 .PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/canny_evaluator.dir
+
+# All Build rule for target.
+CMakeFiles/canny_evaluator.dir/all:
+	$(MAKE) -f CMakeFiles/canny_evaluator.dir/build.make CMakeFiles/canny_evaluator.dir/depend
+	$(MAKE) -f CMakeFiles/canny_evaluator.dir/build.make CMakeFiles/canny_evaluator.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/data/BrnoCannyProject/canny_project/build/CMakeFiles --progress-num=11,12,13,14,15,16,17,18,19 "Built target canny_evaluator"
+.PHONY : CMakeFiles/canny_evaluator.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/canny_evaluator.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /data/BrnoCannyProject/canny_project/build/CMakeFiles 9
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/canny_evaluator.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /data/BrnoCannyProject/canny_project/build/CMakeFiles 0
+.PHONY : CMakeFiles/canny_evaluator.dir/rule
+
+# Convenience name for target.
+canny_evaluator: CMakeFiles/canny_evaluator.dir/rule
+
+.PHONY : canny_evaluator
+
+# clean rule for target.
+CMakeFiles/canny_evaluator.dir/clean:
+	$(MAKE) -f CMakeFiles/canny_evaluator.dir/build.make CMakeFiles/canny_evaluator.dir/clean
+.PHONY : CMakeFiles/canny_evaluator.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/canny_benchmark.dir
@@ -103,7 +132,7 @@ CMakeFiles/canny_benchmark.dir/clean:
 CMakeFiles/canny_server.dir/all:
 	$(MAKE) -f CMakeFiles/canny_server.dir/build.make CMakeFiles/canny_server.dir/depend
 	$(MAKE) -f CMakeFiles/canny_server.dir/build.make CMakeFiles/canny_server.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/data/BrnoCannyProject/canny_project/build/CMakeFiles --progress-num=11,12,13,14,15,16,17,18,19,20 "Built target canny_server"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/data/BrnoCannyProject/canny_project/build/CMakeFiles --progress-num=20,21,22,23,24,25,26,27,28,29 "Built target canny_server"
 .PHONY : CMakeFiles/canny_server.dir/all
 
 # Build rule for subdir invocation for target.

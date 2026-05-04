@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/canny_benchmark.dir/src/benchmark.cpp.o"
-  "CMakeFiles/canny_benchmark.dir/src/benchmark_main.cpp.o"
+  "CMakeFiles/canny_benchmark.dir/src/Benchmark/benchmark.cpp.o"
+  "CMakeFiles/canny_benchmark.dir/src/Benchmark/benchmark_main.cpp.o"
   "CMakeFiles/canny_benchmark.dir/src/gaussian.cpp.o"
   "CMakeFiles/canny_benchmark.dir/src/gradient.cpp.o"
   "CMakeFiles/canny_benchmark.dir/src/hysteresis.cpp.o"

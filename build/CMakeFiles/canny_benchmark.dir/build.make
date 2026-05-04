@@ -70,18 +70,18 @@ CMakeFiles/canny_benchmark.dir/src/utils.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/canny_benchmark.dir/src/utils.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /data/BrnoCannyProject/canny_project/src/utils.cpp -o CMakeFiles/canny_benchmark.dir/src/utils.cpp.s
 
-CMakeFiles/canny_benchmark.dir/src/benchmark_main.cpp.o: CMakeFiles/canny_benchmark.dir/flags.make
-CMakeFiles/canny_benchmark.dir/src/benchmark_main.cpp.o: ../src/benchmark_main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data/BrnoCannyProject/canny_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/canny_benchmark.dir/src/benchmark_main.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/canny_benchmark.dir/src/benchmark_main.cpp.o -c /data/BrnoCannyProject/canny_project/src/benchmark_main.cpp
+CMakeFiles/canny_benchmark.dir/src/Benchmark/benchmark_main.cpp.o: CMakeFiles/canny_benchmark.dir/flags.make
+CMakeFiles/canny_benchmark.dir/src/Benchmark/benchmark_main.cpp.o: ../src/Benchmark/benchmark_main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data/BrnoCannyProject/canny_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/canny_benchmark.dir/src/Benchmark/benchmark_main.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/canny_benchmark.dir/src/Benchmark/benchmark_main.cpp.o -c /data/BrnoCannyProject/canny_project/src/Benchmark/benchmark_main.cpp
 
-CMakeFiles/canny_benchmark.dir/src/benchmark_main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/canny_benchmark.dir/src/benchmark_main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /data/BrnoCannyProject/canny_project/src/benchmark_main.cpp > CMakeFiles/canny_benchmark.dir/src/benchmark_main.cpp.i
+CMakeFiles/canny_benchmark.dir/src/Benchmark/benchmark_main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/canny_benchmark.dir/src/Benchmark/benchmark_main.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /data/BrnoCannyProject/canny_project/src/Benchmark/benchmark_main.cpp > CMakeFiles/canny_benchmark.dir/src/Benchmark/benchmark_main.cpp.i
 
-CMakeFiles/canny_benchmark.dir/src/benchmark_main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/canny_benchmark.dir/src/benchmark_main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /data/BrnoCannyProject/canny_project/src/benchmark_main.cpp -o CMakeFiles/canny_benchmark.dir/src/benchmark_main.cpp.s
+CMakeFiles/canny_benchmark.dir/src/Benchmark/benchmark_main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/canny_benchmark.dir/src/Benchmark/benchmark_main.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /data/BrnoCannyProject/canny_project/src/Benchmark/benchmark_main.cpp -o CMakeFiles/canny_benchmark.dir/src/Benchmark/benchmark_main.cpp.s
 
 CMakeFiles/canny_benchmark.dir/src/gaussian.cpp.o: CMakeFiles/canny_benchmark.dir/flags.make
 CMakeFiles/canny_benchmark.dir/src/gaussian.cpp.o: ../src/gaussian.cpp
@@ -161,43 +161,43 @@ CMakeFiles/canny_benchmark.dir/src/threadpool.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/canny_benchmark.dir/src/threadpool.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /data/BrnoCannyProject/canny_project/src/threadpool.cpp -o CMakeFiles/canny_benchmark.dir/src/threadpool.cpp.s
 
-CMakeFiles/canny_benchmark.dir/src/benchmark.cpp.o: CMakeFiles/canny_benchmark.dir/flags.make
-CMakeFiles/canny_benchmark.dir/src/benchmark.cpp.o: ../src/benchmark.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data/BrnoCannyProject/canny_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/canny_benchmark.dir/src/benchmark.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/canny_benchmark.dir/src/benchmark.cpp.o -c /data/BrnoCannyProject/canny_project/src/benchmark.cpp
+CMakeFiles/canny_benchmark.dir/src/Benchmark/benchmark.cpp.o: CMakeFiles/canny_benchmark.dir/flags.make
+CMakeFiles/canny_benchmark.dir/src/Benchmark/benchmark.cpp.o: ../src/Benchmark/benchmark.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/data/BrnoCannyProject/canny_project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/canny_benchmark.dir/src/Benchmark/benchmark.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/canny_benchmark.dir/src/Benchmark/benchmark.cpp.o -c /data/BrnoCannyProject/canny_project/src/Benchmark/benchmark.cpp
 
-CMakeFiles/canny_benchmark.dir/src/benchmark.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/canny_benchmark.dir/src/benchmark.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /data/BrnoCannyProject/canny_project/src/benchmark.cpp > CMakeFiles/canny_benchmark.dir/src/benchmark.cpp.i
+CMakeFiles/canny_benchmark.dir/src/Benchmark/benchmark.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/canny_benchmark.dir/src/Benchmark/benchmark.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /data/BrnoCannyProject/canny_project/src/Benchmark/benchmark.cpp > CMakeFiles/canny_benchmark.dir/src/Benchmark/benchmark.cpp.i
 
-CMakeFiles/canny_benchmark.dir/src/benchmark.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/canny_benchmark.dir/src/benchmark.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /data/BrnoCannyProject/canny_project/src/benchmark.cpp -o CMakeFiles/canny_benchmark.dir/src/benchmark.cpp.s
+CMakeFiles/canny_benchmark.dir/src/Benchmark/benchmark.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/canny_benchmark.dir/src/Benchmark/benchmark.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /data/BrnoCannyProject/canny_project/src/Benchmark/benchmark.cpp -o CMakeFiles/canny_benchmark.dir/src/Benchmark/benchmark.cpp.s
 
 # Object files for target canny_benchmark
 canny_benchmark_OBJECTS = \
 "CMakeFiles/canny_benchmark.dir/src/utils.cpp.o" \
-"CMakeFiles/canny_benchmark.dir/src/benchmark_main.cpp.o" \
+"CMakeFiles/canny_benchmark.dir/src/Benchmark/benchmark_main.cpp.o" \
 "CMakeFiles/canny_benchmark.dir/src/gaussian.cpp.o" \
 "CMakeFiles/canny_benchmark.dir/src/gradient.cpp.o" \
 "CMakeFiles/canny_benchmark.dir/src/nms.cpp.o" \
 "CMakeFiles/canny_benchmark.dir/src/threshold.cpp.o" \
 "CMakeFiles/canny_benchmark.dir/src/hysteresis.cpp.o" \
 "CMakeFiles/canny_benchmark.dir/src/threadpool.cpp.o" \
-"CMakeFiles/canny_benchmark.dir/src/benchmark.cpp.o"
+"CMakeFiles/canny_benchmark.dir/src/Benchmark/benchmark.cpp.o"
 
 # External object files for target canny_benchmark
 canny_benchmark_EXTERNAL_OBJECTS =
 
 canny_benchmark: CMakeFiles/canny_benchmark.dir/src/utils.cpp.o
-canny_benchmark: CMakeFiles/canny_benchmark.dir/src/benchmark_main.cpp.o
+canny_benchmark: CMakeFiles/canny_benchmark.dir/src/Benchmark/benchmark_main.cpp.o
 canny_benchmark: CMakeFiles/canny_benchmark.dir/src/gaussian.cpp.o
 canny_benchmark: CMakeFiles/canny_benchmark.dir/src/gradient.cpp.o
 canny_benchmark: CMakeFiles/canny_benchmark.dir/src/nms.cpp.o
 canny_benchmark: CMakeFiles/canny_benchmark.dir/src/threshold.cpp.o
 canny_benchmark: CMakeFiles/canny_benchmark.dir/src/hysteresis.cpp.o
 canny_benchmark: CMakeFiles/canny_benchmark.dir/src/threadpool.cpp.o
-canny_benchmark: CMakeFiles/canny_benchmark.dir/src/benchmark.cpp.o
+canny_benchmark: CMakeFiles/canny_benchmark.dir/src/Benchmark/benchmark.cpp.o
 canny_benchmark: CMakeFiles/canny_benchmark.dir/build.make
 canny_benchmark: /usr/lib/x86_64-linux-gnu/libopencv_stitching.so.4.2.0
 canny_benchmark: /usr/lib/x86_64-linux-gnu/libopencv_aruco.so.4.2.0

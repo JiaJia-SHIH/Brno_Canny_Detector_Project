@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/data/BrnoCannyProject/canny_project/src/benchmark.cpp" "/data/BrnoCannyProject/canny_project/build/CMakeFiles/canny_benchmark.dir/src/benchmark.cpp.o"
-  "/data/BrnoCannyProject/canny_project/src/benchmark_main.cpp" "/data/BrnoCannyProject/canny_project/build/CMakeFiles/canny_benchmark.dir/src/benchmark_main.cpp.o"
+  "/data/BrnoCannyProject/canny_project/src/Benchmark/benchmark.cpp" "/data/BrnoCannyProject/canny_project/build/CMakeFiles/canny_benchmark.dir/src/Benchmark/benchmark.cpp.o"
+  "/data/BrnoCannyProject/canny_project/src/Benchmark/benchmark_main.cpp" "/data/BrnoCannyProject/canny_project/build/CMakeFiles/canny_benchmark.dir/src/Benchmark/benchmark_main.cpp.o"
   "/data/BrnoCannyProject/canny_project/src/gaussian.cpp" "/data/BrnoCannyProject/canny_project/build/CMakeFiles/canny_benchmark.dir/src/gaussian.cpp.o"
   "/data/BrnoCannyProject/canny_project/src/gradient.cpp" "/data/BrnoCannyProject/canny_project/build/CMakeFiles/canny_benchmark.dir/src/gradient.cpp.o"
   "/data/BrnoCannyProject/canny_project/src/hysteresis.cpp" "/data/BrnoCannyProject/canny_project/build/CMakeFiles/canny_benchmark.dir/src/hysteresis.cpp.o"
@@ -18,6 +18,7 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
+  "../src"
   "/usr/include/opencv4"
   )
 

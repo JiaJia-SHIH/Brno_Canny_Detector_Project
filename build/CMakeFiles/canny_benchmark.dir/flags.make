@@ -6,5 +6,5 @@ CXX_FLAGS =  -fopenmp   -fopenmp -std=gnu++17
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -isystem /usr/include/opencv4 
+CXX_INCLUDES = -I/data/BrnoCannyProject/canny_project/src -isystem /usr/include/opencv4 
 

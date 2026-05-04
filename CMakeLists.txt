@@ -25,14 +25,25 @@ add_executable(canny_server
 
 add_executable(canny_benchmark 
         src/utils.cpp
-        src/benchmark_main.cpp
+        src/Benchmark/benchmark_main.cpp
         src/gaussian.cpp
         src/gradient.cpp
         src/nms.cpp
         src/threshold.cpp
         src/hysteresis.cpp
         src/threadpool.cpp
-        src/benchmark.cpp
+        src/Benchmark/benchmark.cpp
+        )
+
+add_executable(canny_evaluator 
+        src/utils.cpp
+        src/Evaluation/evaluate_main.cpp
+        src/gaussian.cpp
+        src/gradient.cpp
+        src/nms.cpp
+        src/threshold.cpp
+        src/hysteresis.cpp
+        src/Evaluation/evaluate.cpp
         )
 
 target_link_libraries(canny_server
@@ -44,3 +55,11 @@ target_link_libraries(canny_benchmark
     ${OpenCV_LIBS}
     OpenMP::OpenMP_CXX
 )
+
+target_link_libraries(canny_evaluator
+    ${OpenCV_LIBS}
+    OpenMP::OpenMP_CXX
+)
+
+target_include_directories(canny_benchmark PRIVATE src)
+target_include_directories(canny_evaluator PRIVATE src)

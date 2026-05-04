@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named canny_evaluator
+
+# Build rule for target.
+canny_evaluator: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 canny_evaluator
+.PHONY : canny_evaluator
+
+# fast build rule for target.
+canny_evaluator/fast:
+	$(MAKE) -f CMakeFiles/canny_evaluator.dir/build.make CMakeFiles/canny_evaluator.dir/build
+.PHONY : canny_evaluator/fast
+
+#=============================================================================
 # Target rules for targets named canny_benchmark
 
 # Build rule for target.
@@ -136,59 +149,113 @@ canny_server/fast:
 	$(MAKE) -f CMakeFiles/canny_server.dir/build.make CMakeFiles/canny_server.dir/build
 .PHONY : canny_server/fast
 
-src/benchmark.o: src/benchmark.cpp.o
+src/Benchmark/benchmark.o: src/Benchmark/benchmark.cpp.o
 
-.PHONY : src/benchmark.o
-
-# target to build an object file
-src/benchmark.cpp.o:
-	$(MAKE) -f CMakeFiles/canny_benchmark.dir/build.make CMakeFiles/canny_benchmark.dir/src/benchmark.cpp.o
-.PHONY : src/benchmark.cpp.o
-
-src/benchmark.i: src/benchmark.cpp.i
-
-.PHONY : src/benchmark.i
-
-# target to preprocess a source file
-src/benchmark.cpp.i:
-	$(MAKE) -f CMakeFiles/canny_benchmark.dir/build.make CMakeFiles/canny_benchmark.dir/src/benchmark.cpp.i
-.PHONY : src/benchmark.cpp.i
-
-src/benchmark.s: src/benchmark.cpp.s
-
-.PHONY : src/benchmark.s
-
-# target to generate assembly for a file
-src/benchmark.cpp.s:
-	$(MAKE) -f CMakeFiles/canny_benchmark.dir/build.make CMakeFiles/canny_benchmark.dir/src/benchmark.cpp.s
-.PHONY : src/benchmark.cpp.s
-
-src/benchmark_main.o: src/benchmark_main.cpp.o
-
-.PHONY : src/benchmark_main.o
+.PHONY : src/Benchmark/benchmark.o
 
 # target to build an object file
-src/benchmark_main.cpp.o:
-	$(MAKE) -f CMakeFiles/canny_benchmark.dir/build.make CMakeFiles/canny_benchmark.dir/src/benchmark_main.cpp.o
-.PHONY : src/benchmark_main.cpp.o
+src/Benchmark/benchmark.cpp.o:
+	$(MAKE) -f CMakeFiles/canny_benchmark.dir/build.make CMakeFiles/canny_benchmark.dir/src/Benchmark/benchmark.cpp.o
+.PHONY : src/Benchmark/benchmark.cpp.o
 
-src/benchmark_main.i: src/benchmark_main.cpp.i
+src/Benchmark/benchmark.i: src/Benchmark/benchmark.cpp.i
 
-.PHONY : src/benchmark_main.i
+.PHONY : src/Benchmark/benchmark.i
 
 # target to preprocess a source file
-src/benchmark_main.cpp.i:
-	$(MAKE) -f CMakeFiles/canny_benchmark.dir/build.make CMakeFiles/canny_benchmark.dir/src/benchmark_main.cpp.i
-.PHONY : src/benchmark_main.cpp.i
+src/Benchmark/benchmark.cpp.i:
+	$(MAKE) -f CMakeFiles/canny_benchmark.dir/build.make CMakeFiles/canny_benchmark.dir/src/Benchmark/benchmark.cpp.i
+.PHONY : src/Benchmark/benchmark.cpp.i
 
-src/benchmark_main.s: src/benchmark_main.cpp.s
+src/Benchmark/benchmark.s: src/Benchmark/benchmark.cpp.s
 
-.PHONY : src/benchmark_main.s
+.PHONY : src/Benchmark/benchmark.s
 
 # target to generate assembly for a file
-src/benchmark_main.cpp.s:
-	$(MAKE) -f CMakeFiles/canny_benchmark.dir/build.make CMakeFiles/canny_benchmark.dir/src/benchmark_main.cpp.s
-.PHONY : src/benchmark_main.cpp.s
+src/Benchmark/benchmark.cpp.s:
+	$(MAKE) -f CMakeFiles/canny_benchmark.dir/build.make CMakeFiles/canny_benchmark.dir/src/Benchmark/benchmark.cpp.s
+.PHONY : src/Benchmark/benchmark.cpp.s
+
+src/Benchmark/benchmark_main.o: src/Benchmark/benchmark_main.cpp.o
+
+.PHONY : src/Benchmark/benchmark_main.o
+
+# target to build an object file
+src/Benchmark/benchmark_main.cpp.o:
+	$(MAKE) -f CMakeFiles/canny_benchmark.dir/build.make CMakeFiles/canny_benchmark.dir/src/Benchmark/benchmark_main.cpp.o
+.PHONY : src/Benchmark/benchmark_main.cpp.o
+
+src/Benchmark/benchmark_main.i: src/Benchmark/benchmark_main.cpp.i
+
+.PHONY : src/Benchmark/benchmark_main.i
+
+# target to preprocess a source file
+src/Benchmark/benchmark_main.cpp.i:
+	$(MAKE) -f CMakeFiles/canny_benchmark.dir/build.make CMakeFiles/canny_benchmark.dir/src/Benchmark/benchmark_main.cpp.i
+.PHONY : src/Benchmark/benchmark_main.cpp.i
+
+src/Benchmark/benchmark_main.s: src/Benchmark/benchmark_main.cpp.s
+
+.PHONY : src/Benchmark/benchmark_main.s
+
+# target to generate assembly for a file
+src/Benchmark/benchmark_main.cpp.s:
+	$(MAKE) -f CMakeFiles/canny_benchmark.dir/build.make CMakeFiles/canny_benchmark.dir/src/Benchmark/benchmark_main.cpp.s
+.PHONY : src/Benchmark/benchmark_main.cpp.s
+
+src/Evaluation/evaluate.o: src/Evaluation/evaluate.cpp.o
+
+.PHONY : src/Evaluation/evaluate.o
+
+# target to build an object file
+src/Evaluation/evaluate.cpp.o:
+	$(MAKE) -f CMakeFiles/canny_evaluator.dir/build.make CMakeFiles/canny_evaluator.dir/src/Evaluation/evaluate.cpp.o
+.PHONY : src/Evaluation/evaluate.cpp.o
+
+src/Evaluation/evaluate.i: src/Evaluation/evaluate.cpp.i
+
+.PHONY : src/Evaluation/evaluate.i
+
+# target to preprocess a source file
+src/Evaluation/evaluate.cpp.i:
+	$(MAKE) -f CMakeFiles/canny_evaluator.dir/build.make CMakeFiles/canny_evaluator.dir/src/Evaluation/evaluate.cpp.i
+.PHONY : src/Evaluation/evaluate.cpp.i
+
+src/Evaluation/evaluate.s: src/Evaluation/evaluate.cpp.s
+
+.PHONY : src/Evaluation/evaluate.s
+
+# target to generate assembly for a file
+src/Evaluation/evaluate.cpp.s:
+	$(MAKE) -f CMakeFiles/canny_evaluator.dir/build.make CMakeFiles/canny_evaluator.dir/src/Evaluation/evaluate.cpp.s
+.PHONY : src/Evaluation/evaluate.cpp.s
+
+src/Evaluation/evaluate_main.o: src/Evaluation/evaluate_main.cpp.o
+
+.PHONY : src/Evaluation/evaluate_main.o
+
+# target to build an object file
+src/Evaluation/evaluate_main.cpp.o:
+	$(MAKE) -f CMakeFiles/canny_evaluator.dir/build.make CMakeFiles/canny_evaluator.dir/src/Evaluation/evaluate_main.cpp.o
+.PHONY : src/Evaluation/evaluate_main.cpp.o
+
+src/Evaluation/evaluate_main.i: src/Evaluation/evaluate_main.cpp.i
+
+.PHONY : src/Evaluation/evaluate_main.i
+
+# target to preprocess a source file
+src/Evaluation/evaluate_main.cpp.i:
+	$(MAKE) -f CMakeFiles/canny_evaluator.dir/build.make CMakeFiles/canny_evaluator.dir/src/Evaluation/evaluate_main.cpp.i
+.PHONY : src/Evaluation/evaluate_main.cpp.i
+
+src/Evaluation/evaluate_main.s: src/Evaluation/evaluate_main.cpp.s
+
+.PHONY : src/Evaluation/evaluate_main.s
+
+# target to generate assembly for a file
+src/Evaluation/evaluate_main.cpp.s:
+	$(MAKE) -f CMakeFiles/canny_evaluator.dir/build.make CMakeFiles/canny_evaluator.dir/src/Evaluation/evaluate_main.cpp.s
+.PHONY : src/Evaluation/evaluate_main.cpp.s
 
 src/gaussian.o: src/gaussian.cpp.o
 
@@ -196,6 +263,7 @@ src/gaussian.o: src/gaussian.cpp.o
 
 # target to build an object file
 src/gaussian.cpp.o:
+	$(MAKE) -f CMakeFiles/canny_evaluator.dir/build.make CMakeFiles/canny_evaluator.dir/src/gaussian.cpp.o
 	$(MAKE) -f CMakeFiles/canny_benchmark.dir/build.make CMakeFiles/canny_benchmark.dir/src/gaussian.cpp.o
 	$(MAKE) -f CMakeFiles/canny_server.dir/build.make CMakeFiles/canny_server.dir/src/gaussian.cpp.o
 .PHONY : src/gaussian.cpp.o
@@ -206,6 +274,7 @@ src/gaussian.i: src/gaussian.cpp.i
 
 # target to preprocess a source file
 src/gaussian.cpp.i:
+	$(MAKE) -f CMakeFiles/canny_evaluator.dir/build.make CMakeFiles/canny_evaluator.dir/src/gaussian.cpp.i
 	$(MAKE) -f CMakeFiles/canny_benchmark.dir/build.make CMakeFiles/canny_benchmark.dir/src/gaussian.cpp.i
 	$(MAKE) -f CMakeFiles/canny_server.dir/build.make CMakeFiles/canny_server.dir/src/gaussian.cpp.i
 .PHONY : src/gaussian.cpp.i
@@ -216,6 +285,7 @@ src/gaussian.s: src/gaussian.cpp.s
 
 # target to generate assembly for a file
 src/gaussian.cpp.s:
+	$(MAKE) -f CMakeFiles/canny_evaluator.dir/build.make CMakeFiles/canny_evaluator.dir/src/gaussian.cpp.s
 	$(MAKE) -f CMakeFiles/canny_benchmark.dir/build.make CMakeFiles/canny_benchmark.dir/src/gaussian.cpp.s
 	$(MAKE) -f CMakeFiles/canny_server.dir/build.make CMakeFiles/canny_server.dir/src/gaussian.cpp.s
 .PHONY : src/gaussian.cpp.s
@@ -226,6 +296,7 @@ src/gradient.o: src/gradient.cpp.o
 
 # target to build an object file
 src/gradient.cpp.o:
+	$(MAKE) -f CMakeFiles/canny_evaluator.dir/build.make CMakeFiles/canny_evaluator.dir/src/gradient.cpp.o
 	$(MAKE) -f CMakeFiles/canny_benchmark.dir/build.make CMakeFiles/canny_benchmark.dir/src/gradient.cpp.o
 	$(MAKE) -f CMakeFiles/canny_server.dir/build.make CMakeFiles/canny_server.dir/src/gradient.cpp.o
 .PHONY : src/gradient.cpp.o
@@ -236,6 +307,7 @@ src/gradient.i: src/gradient.cpp.i
 
 # target to preprocess a source file
 src/gradient.cpp.i:
+	$(MAKE) -f CMakeFiles/canny_evaluator.dir/build.make CMakeFiles/canny_evaluator.dir/src/gradient.cpp.i
 	$(MAKE) -f CMakeFiles/canny_benchmark.dir/build.make CMakeFiles/canny_benchmark.dir/src/gradient.cpp.i
 	$(MAKE) -f CMakeFiles/canny_server.dir/build.make CMakeFiles/canny_server.dir/src/gradient.cpp.i
 .PHONY : src/gradient.cpp.i
@@ -246,6 +318,7 @@ src/gradient.s: src/gradient.cpp.s
 
 # target to generate assembly for a file
 src/gradient.cpp.s:
+	$(MAKE) -f CMakeFiles/canny_evaluator.dir/build.make CMakeFiles/canny_evaluator.dir/src/gradient.cpp.s
 	$(MAKE) -f CMakeFiles/canny_benchmark.dir/build.make CMakeFiles/canny_benchmark.dir/src/gradient.cpp.s
 	$(MAKE) -f CMakeFiles/canny_server.dir/build.make CMakeFiles/canny_server.dir/src/gradient.cpp.s
 .PHONY : src/gradient.cpp.s
@@ -256,6 +329,7 @@ src/hysteresis.o: src/hysteresis.cpp.o
 
 # target to build an object file
 src/hysteresis.cpp.o:
+	$(MAKE) -f CMakeFiles/canny_evaluator.dir/build.make CMakeFiles/canny_evaluator.dir/src/hysteresis.cpp.o
 	$(MAKE) -f CMakeFiles/canny_benchmark.dir/build.make CMakeFiles/canny_benchmark.dir/src/hysteresis.cpp.o
 	$(MAKE) -f CMakeFiles/canny_server.dir/build.make CMakeFiles/canny_server.dir/src/hysteresis.cpp.o
 .PHONY : src/hysteresis.cpp.o
@@ -266,6 +340,7 @@ src/hysteresis.i: src/hysteresis.cpp.i
 
 # target to preprocess a source file
 src/hysteresis.cpp.i:
+	$(MAKE) -f CMakeFiles/canny_evaluator.dir/build.make CMakeFiles/canny_evaluator.dir/src/hysteresis.cpp.i
 	$(MAKE) -f CMakeFiles/canny_benchmark.dir/build.make CMakeFiles/canny_benchmark.dir/src/hysteresis.cpp.i
 	$(MAKE) -f CMakeFiles/canny_server.dir/build.make CMakeFiles/canny_server.dir/src/hysteresis.cpp.i
 .PHONY : src/hysteresis.cpp.i
@@ -276,6 +351,7 @@ src/hysteresis.s: src/hysteresis.cpp.s
 
 # target to generate assembly for a file
 src/hysteresis.cpp.s:
+	$(MAKE) -f CMakeFiles/canny_evaluator.dir/build.make CMakeFiles/canny_evaluator.dir/src/hysteresis.cpp.s
 	$(MAKE) -f CMakeFiles/canny_benchmark.dir/build.make CMakeFiles/canny_benchmark.dir/src/hysteresis.cpp.s
 	$(MAKE) -f CMakeFiles/canny_server.dir/build.make CMakeFiles/canny_server.dir/src/hysteresis.cpp.s
 .PHONY : src/hysteresis.cpp.s
@@ -313,6 +389,7 @@ src/nms.o: src/nms.cpp.o
 
 # target to build an object file
 src/nms.cpp.o:
+	$(MAKE) -f CMakeFiles/canny_evaluator.dir/build.make CMakeFiles/canny_evaluator.dir/src/nms.cpp.o
 	$(MAKE) -f CMakeFiles/canny_benchmark.dir/build.make CMakeFiles/canny_benchmark.dir/src/nms.cpp.o
 	$(MAKE) -f CMakeFiles/canny_server.dir/build.make CMakeFiles/canny_server.dir/src/nms.cpp.o
 .PHONY : src/nms.cpp.o
@@ -323,6 +400,7 @@ src/nms.i: src/nms.cpp.i
 
 # target to preprocess a source file
 src/nms.cpp.i:
+	$(MAKE) -f CMakeFiles/canny_evaluator.dir/build.make CMakeFiles/canny_evaluator.dir/src/nms.cpp.i
 	$(MAKE) -f CMakeFiles/canny_benchmark.dir/build.make CMakeFiles/canny_benchmark.dir/src/nms.cpp.i
 	$(MAKE) -f CMakeFiles/canny_server.dir/build.make CMakeFiles/canny_server.dir/src/nms.cpp.i
 .PHONY : src/nms.cpp.i
@@ -333,6 +411,7 @@ src/nms.s: src/nms.cpp.s
 
 # target to generate assembly for a file
 src/nms.cpp.s:
+	$(MAKE) -f CMakeFiles/canny_evaluator.dir/build.make CMakeFiles/canny_evaluator.dir/src/nms.cpp.s
 	$(MAKE) -f CMakeFiles/canny_benchmark.dir/build.make CMakeFiles/canny_benchmark.dir/src/nms.cpp.s
 	$(MAKE) -f CMakeFiles/canny_server.dir/build.make CMakeFiles/canny_server.dir/src/nms.cpp.s
 .PHONY : src/nms.cpp.s
@@ -400,6 +479,7 @@ src/threshold.o: src/threshold.cpp.o
 
 # target to build an object file
 src/threshold.cpp.o:
+	$(MAKE) -f CMakeFiles/canny_evaluator.dir/build.make CMakeFiles/canny_evaluator.dir/src/threshold.cpp.o
 	$(MAKE) -f CMakeFiles/canny_benchmark.dir/build.make CMakeFiles/canny_benchmark.dir/src/threshold.cpp.o
 	$(MAKE) -f CMakeFiles/canny_server.dir/build.make CMakeFiles/canny_server.dir/src/threshold.cpp.o
 .PHONY : src/threshold.cpp.o
@@ -410,6 +490,7 @@ src/threshold.i: src/threshold.cpp.i
 
 # target to preprocess a source file
 src/threshold.cpp.i:
+	$(MAKE) -f CMakeFiles/canny_evaluator.dir/build.make CMakeFiles/canny_evaluator.dir/src/threshold.cpp.i
 	$(MAKE) -f CMakeFiles/canny_benchmark.dir/build.make CMakeFiles/canny_benchmark.dir/src/threshold.cpp.i
 	$(MAKE) -f CMakeFiles/canny_server.dir/build.make CMakeFiles/canny_server.dir/src/threshold.cpp.i
 .PHONY : src/threshold.cpp.i
@@ -420,6 +501,7 @@ src/threshold.s: src/threshold.cpp.s
 
 # target to generate assembly for a file
 src/threshold.cpp.s:
+	$(MAKE) -f CMakeFiles/canny_evaluator.dir/build.make CMakeFiles/canny_evaluator.dir/src/threshold.cpp.s
 	$(MAKE) -f CMakeFiles/canny_benchmark.dir/build.make CMakeFiles/canny_benchmark.dir/src/threshold.cpp.s
 	$(MAKE) -f CMakeFiles/canny_server.dir/build.make CMakeFiles/canny_server.dir/src/threshold.cpp.s
 .PHONY : src/threshold.cpp.s
@@ -430,6 +512,7 @@ src/utils.o: src/utils.cpp.o
 
 # target to build an object file
 src/utils.cpp.o:
+	$(MAKE) -f CMakeFiles/canny_evaluator.dir/build.make CMakeFiles/canny_evaluator.dir/src/utils.cpp.o
 	$(MAKE) -f CMakeFiles/canny_benchmark.dir/build.make CMakeFiles/canny_benchmark.dir/src/utils.cpp.o
 	$(MAKE) -f CMakeFiles/canny_server.dir/build.make CMakeFiles/canny_server.dir/src/utils.cpp.o
 .PHONY : src/utils.cpp.o
@@ -440,6 +523,7 @@ src/utils.i: src/utils.cpp.i
 
 # target to preprocess a source file
 src/utils.cpp.i:
+	$(MAKE) -f CMakeFiles/canny_evaluator.dir/build.make CMakeFiles/canny_evaluator.dir/src/utils.cpp.i
 	$(MAKE) -f CMakeFiles/canny_benchmark.dir/build.make CMakeFiles/canny_benchmark.dir/src/utils.cpp.i
 	$(MAKE) -f CMakeFiles/canny_server.dir/build.make CMakeFiles/canny_server.dir/src/utils.cpp.i
 .PHONY : src/utils.cpp.i
@@ -450,6 +534,7 @@ src/utils.s: src/utils.cpp.s
 
 # target to generate assembly for a file
 src/utils.cpp.s:
+	$(MAKE) -f CMakeFiles/canny_evaluator.dir/build.make CMakeFiles/canny_evaluator.dir/src/utils.cpp.s
 	$(MAKE) -f CMakeFiles/canny_benchmark.dir/build.make CMakeFiles/canny_benchmark.dir/src/utils.cpp.s
 	$(MAKE) -f CMakeFiles/canny_server.dir/build.make CMakeFiles/canny_server.dir/src/utils.cpp.s
 .PHONY : src/utils.cpp.s
@@ -461,15 +546,22 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
+	@echo "... canny_evaluator"
 	@echo "... edit_cache"
 	@echo "... canny_benchmark"
 	@echo "... canny_server"
-	@echo "... src/benchmark.o"
-	@echo "... src/benchmark.i"
-	@echo "... src/benchmark.s"
-	@echo "... src/benchmark_main.o"
-	@echo "... src/benchmark_main.i"
-	@echo "... src/benchmark_main.s"
+	@echo "... src/Benchmark/benchmark.o"
+	@echo "... src/Benchmark/benchmark.i"
+	@echo "... src/Benchmark/benchmark.s"
+	@echo "... src/Benchmark/benchmark_main.o"
+	@echo "... src/Benchmark/benchmark_main.i"
+	@echo "... src/Benchmark/benchmark_main.s"
+	@echo "... src/Evaluation/evaluate.o"
+	@echo "... src/Evaluation/evaluate.i"
+	@echo "... src/Evaluation/evaluate.s"
+	@echo "... src/Evaluation/evaluate_main.o"
+	@echo "... src/Evaluation/evaluate_main.i"
+	@echo "... src/Evaluation/evaluate_main.s"
 	@echo "... src/gaussian.o"
 	@echo "... src/gaussian.i"
 	@echo "... src/gaussian.s"

@@ -1,4 +1,4 @@
-#include "benchmark.hpp"
+#include "Benchmark/benchmark.hpp"
 #include <iostream>
 
 int main(int argc, char** argv)
