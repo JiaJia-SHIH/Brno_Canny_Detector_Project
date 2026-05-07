@@ -1,5 +1,6 @@
 #include "gradient.hpp"
 #include <cmath>
+#include <omp.h>
 
 GradientResult computeGradient(const cv::Mat& blurred)
 {
@@ -12,6 +13,7 @@ GradientResult computeGradient(const cv::Mat& blurred)
     result.magnitude = cv::Mat::zeros(rows, cols, CV_32F);
     result.orientation = cv::Mat::zeros(rows, cols, CV_32F);
     
+    #pragma omp parallel for
     for(int i = 1; i < rows-1; i++)
     {
         for(int j = 1; j < cols-1; j++)

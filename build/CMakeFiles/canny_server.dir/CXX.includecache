@@ -13,6 +13,8 @@ algorithm
 -
 vector
 -
+omp.h
+-
 
 /data/BrnoCannyProject/canny_project/src/threshold.hpp
 opencv2/opencv.hpp

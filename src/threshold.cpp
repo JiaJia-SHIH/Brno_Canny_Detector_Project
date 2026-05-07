@@ -1,6 +1,7 @@
 #include "threshold.hpp"
 #include <algorithm>
 #include <vector>
+#include <omp.h>
 
 using namespace std;
 
@@ -8,6 +9,7 @@ cv::Mat doubleThreshold(const cv::Mat& nms, float lowRatio, float highRatio)
 {
     // adaptively find the maximum value in the nms image
     float maxVal = 0.0f;
+    #pragma omp parallel for reduction(max:maxVal)
     for(int i = 0; i < nms.rows; i++)
     {
         for(int j = 0; j < nms.cols; j++)
@@ -21,6 +23,7 @@ cv::Mat doubleThreshold(const cv::Mat& nms, float lowRatio, float highRatio)
 
     cv::Mat dst = cv::Mat::zeros(nms.size(), CV_8U);
 
+    #pragma omp parallel for
     for(int i = 0; i < nms.rows; i++)
     {
         for(int j = 0; j < nms.cols; j++)
