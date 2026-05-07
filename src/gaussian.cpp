@@ -2,6 +2,8 @@
 #include <cmath>
 #include <omp.h>
 
+const int TILE_SIZE = 64; // Tile size
+
 // 1D kernel
 std::vector<float> makeGaussianKernel(int radius, float sigma)
 {
@@ -30,20 +32,29 @@ static cv::Mat convolveH(const cv::Mat& src, const std::vector<float>& kernel)
     int radius = kernel.size() / 2;
     cv::Mat dst = cv::Mat::zeros(src.size(), CV_32F); // to store the accumulated results
 
-    #pragma omp parallel for
-    for(int y = 0; y < src.rows; y++)
+    #pragma omp parallel for collapse(2)
+    for(int ty = 0; ty < src.rows; ty += TILE_SIZE)
     {
-        for(int x = 0; x < src.cols; x++)
+        for(int tx = 0; tx < src.cols; tx += TILE_SIZE)
         {
-            float sum = 0.0f;
-            for(int offset = -radius; offset <= radius; offset++)
+            int y_end = std::min(ty + TILE_SIZE, src.rows);
+            int x_end = std::min(tx + TILE_SIZE, src.cols);
+            
+            for(int y = ty; y < y_end; y++)
             {
-                int nx = std::clamp(x + offset, 0, src.cols - 1); // handle borders
-                sum += src.at<float>(y, nx) * kernel[offset + radius];
-            }
-            dst.at<float>(y, x) = sum;
-        }
-    }
+                for(int x = tx; x < x_end; x++)
+                {
+                    float sum = 0.0f;
+                    for(int offset = -radius; offset <= radius; offset++)
+                    {
+                        int nx = std::clamp(x + offset, 0, src.cols - 1); // handle borders
+                        sum += src.at<float>(y, nx) * kernel[offset + radius];
+                    }
+                    dst.at<float>(y, x) = sum;
+                } // x
+            } // y
+        } // tx
+    } // ty
     return dst;
 }
 
@@ -52,19 +63,28 @@ static cv::Mat convolveV(const cv::Mat& src, const std::vector<float>& kernel)
     int radius = kernel.size() / 2;
     cv::Mat dst = cv::Mat::zeros(src.size(), CV_32F);
 
-    #pragma omp parallel for
-    for(int y = 0; y < src.rows; y++)
+    #pragma omp parallel for collapse(2)
+    for(int ty = 0; ty < src.rows; ty += TILE_SIZE)
     {
-        for(int x = 0; x < src.cols; x++)
+        for(int tx = 0; tx < src.cols; tx += TILE_SIZE)
         {
-            float sum = 0.0f;
-            for(int offset = -radius; offset <= radius; offset++)
+            int y_end = std::min(ty + TILE_SIZE, src.rows);
+            int x_end = std::min(tx + TILE_SIZE, src.cols);
+            
+            for(int y = ty; y < y_end; y++)
             {
-                int ny = std::clamp(y + offset, 0, src.rows - 1);
+                for(int x = tx; x < x_end; x++)
+                {
+                    float sum = 0.0f;
+                    for(int offset = -radius; offset <= radius; offset++)
+                    {
+                        int ny = std::clamp(y + offset, 0, src.rows - 1);
 
-                sum += src.at<float>(ny, x) * kernel[offset + radius];
+                        sum += src.at<float>(ny, x) * kernel[offset + radius];
+                    }
+                    dst.at<float>(y, x) = sum;
+                }
             }
-            dst.at<float>(y, x) = sum;
         }
     }
     return dst;

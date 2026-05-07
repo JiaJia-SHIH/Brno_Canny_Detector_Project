@@ -6,17 +6,17 @@
 
 #IncludeRegexTransform: 
 
-/data/BrnoCannyProject/canny_project/src/threshold.cpp
-threshold.hpp
-/data/BrnoCannyProject/canny_project/src/threshold.hpp
-algorithm
--
-vector
+/data/BrnoCannyProject/canny_project/src/gaussian.cpp
+gaussian.hpp
+/data/BrnoCannyProject/canny_project/src/gaussian.hpp
+cmath
 -
 omp.h
 -
 
-/data/BrnoCannyProject/canny_project/src/threshold.hpp
+/data/BrnoCannyProject/canny_project/src/gaussian.hpp
+vector
+-
 opencv2/opencv.hpp
 -
 

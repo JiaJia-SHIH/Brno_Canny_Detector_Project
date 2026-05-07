@@ -267,7 +267,7 @@ vector<BenchmarkResult> BenchmarkRunner::runAll()
             // Benchmark Serial
             if(config_.benchmark_serial)
             {
-                cout << " - Serial" << flush;
+                cout << " - Serial, " << flush;
                 auto result = benchmarkSerial(test_img, img_name + "_" + to_string(scale) + "x");
                 results.push_back(result);
                 cout << result.execution_time_ms << " ms" << endl;
