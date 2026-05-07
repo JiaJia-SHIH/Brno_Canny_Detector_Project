@@ -267,7 +267,7 @@ vector<BenchmarkResult> BenchmarkRunner::runAll()
             // Benchmark Serial
             if(config_.benchmark_serial)
             {
-                cout << " - Serial..." << flush;
+                cout << " - Serial" << flush;
                 auto result = benchmarkSerial(test_img, img_name + "_" + to_string(scale) + "x");
                 results.push_back(result);
                 cout << result.execution_time_ms << " ms" << endl;
@@ -280,7 +280,7 @@ vector<BenchmarkResult> BenchmarkRunner::runAll()
                 {
                     if(num_threads == 1) continue; // skip, it is tested in serial
 
-                    cout << "Parallel..., " << num_threads << "threads" << flush;
+                    cout << "- Parallel, " << num_threads << "threads, " << flush;
                     auto result = benchmarkParallel(test_img, img_name + "_" + to_string(scale) + "x", num_threads);
                     results.push_back(result);
                     cout << result.execution_time_ms << " ms" << endl;
@@ -291,7 +291,7 @@ vector<BenchmarkResult> BenchmarkRunner::runAll()
             // Benchmark OpenCV
             if(config_.benchmark_opencv)
             {
-                cout << "OpenCV..." << flush;
+                cout << "- OpenCV, " << flush;
                 auto result = benchmarkOpenCV(test_img, img_name + "_" + to_string(scale) + "x");
                 results.push_back(result);
                 cout << result.execution_time_ms << " ms" << endl;
