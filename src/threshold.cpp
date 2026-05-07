@@ -71,8 +71,8 @@ pair<float, float> getAutoThresholdValues(const cv::Mat& nms)
 {
     // ** Use 90% to be the high threshold
     // ** Use 50% to be the low threshold
-    float lowThreshold = computePercentile(nms, 0.20f);
-    float highThreshold = computePercentile(nms, 0.70f);
+    float lowThreshold = computePercentile(nms, 0.30f);
+    float highThreshold = computePercentile(nms, 0.60f);
 
     return {lowThreshold, highThreshold};
 }
