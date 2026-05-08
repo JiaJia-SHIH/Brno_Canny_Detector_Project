@@ -165,37 +165,37 @@ static cv::Mat buildDisplay(const cv::Mat& src, int radius, float sigma, float l
     
     cv::Mat threshold;
     if(useAutoThreshold)
-    {
         threshold = autoThreshold(nms);
-    }
     else
-    {
         threshold = doubleThreshold(nms, lowR, highR);
-    }
     
     cv::Mat hysteresis = hysteresisTracking(threshold);
 
     cv::Mat panels[6] = 
     {
-        toColor(normalizeManually(blurred)),
-        toColor(normalizeManually(gradient.magnitude)),
-        orientationToColorManually(gradient.orientation, normalizeManually(gradient.magnitude)),
-        toColor(normalizeManually(nms)),
-        threshColor(threshold),
-        toColor(hysteresis)
+        toColor(gray),                                      // 0. Original
+        toColor(normalizeManually(blurred)),                // 1. Gaussian Blur
+        toColor(normalizeManually(gradient.magnitude)),     // 2. Gradient Magnitude
+        toColor(normalizeManually(nms)),                    // 3. NMS
+        threshColor(threshold),                             // 4. Double Threshold
+        toColor(hysteresis)                                 // 5. Hysteresis
     };
 
     std::string labels[6] = {
+        "0. Original",
         "1. Gaussian Blur",
         "2. Gradient Magnitude",
-        "3. Gradient Orientation",
-        "4. Non-Maximum Suppression",
-        "5. Double Threshold",
-        "6. Hysteresis Tracking"
+        "3. Non-Maximum Suppression",
+        "4. Double Threshold",
+        "5. Hysteresis Tracking"
     };
 
+    // adjust the panel size
     for(int i = 0; i < 6; i++)
     {
+        cv::Mat resized;
+        cv::resize(panels[i], resized, cv::Size(panels[i].cols * 2 / 3, panels[i].rows * 2 / 3), 0, 0, cv::INTER_LINEAR);
+        panels[i] = resized;
         addLabel(panels[i], labels[i]);
     }
 
