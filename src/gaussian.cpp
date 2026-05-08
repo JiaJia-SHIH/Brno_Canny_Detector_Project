@@ -1,3 +1,25 @@
+/**
+ * @file gaussian.cpp
+ * @author SHIH YUE JIA (xshihyu00)
+ * @brief Custom implementation of Gaussian Blur using separable convolution
+ * 
+ * ASSIGNMENT: Canny Edge Detection Implementation
+ * COURSE: Image Processing in English
+ * INSTITUTION: Brno of Technology
+ * 
+ * This file implements the Gaussian blur preprocessing stage of the Canny
+ * edge detection algorithm. It uses separable convolution (horizontal + vertical)
+ * for efficiency, avoiding the full 2D kernel multiplication.
+ * 
+ * OpenMP parallelization is used for row-wise operations to improve performance
+ * on multi-core systems.
+ *
+ *
+ * Tiling is used to solve cache thrashing problem, which can reduce Cache Miss 
+ * problem when the input image size is large.
+ */
+
+
 #include "gaussian.hpp"
 #include <cmath>
 #include <omp.h>

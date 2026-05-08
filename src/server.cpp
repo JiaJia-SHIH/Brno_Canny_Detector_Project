@@ -129,6 +129,29 @@ static cv::Mat threshColor(const cv::Mat& t)
     return out;
 }
 
+static void addLabel(cv::Mat& img, const std::string& label)
+{
+    int baseline = 0;
+    int fontFace = cv::FONT_HERSHEY_SIMPLEX;
+    double fontScale = 0.6;
+    int thickness = 2;
+    
+    cv::Size textSize = cv::getTextSize(label, fontFace, fontScale, thickness, &baseline);
+    
+    int x = 8;
+    int y = textSize.height + 12;
+    
+    cv::Scalar bgColor(20, 20, 20);
+    cv::Scalar textColor(255, 180, 80);
+    
+    cv::rectangle(img, 
+                  cv::Point(x - 4, y - textSize.height - 6),
+                  cv::Point(x + textSize.width + 4, y + 4),
+                  bgColor, cv::FILLED);
+    
+    cv::putText(img, label, cv::Point(x, y), fontFace, fontScale, textColor, thickness);
+}
+
 // full pipeline
 static cv::Mat buildDisplay(const cv::Mat& src, int radius, float sigma, float lowR, float highR, bool useAutoThreshold)
 {
@@ -162,6 +185,20 @@ static cv::Mat buildDisplay(const cv::Mat& src, int radius, float sigma, float l
         toColor(hysteresis)
     };
 
+    std::string labels[6] = {
+        "1. Gaussian Blur",
+        "2. Gradient Magnitude",
+        "3. Gradient Orientation",
+        "4. Non-Maximum Suppression",
+        "5. Double Threshold",
+        "6. Hysteresis Tracking"
+    };
+
+    for(int i = 0; i < 6; i++)
+    {
+        addLabel(panels[i], labels[i]);
+    }
+
     cv::Mat row1 = hstack(hstack(panels[0], panels[1]), panels[2]);
     cv::Mat row2 = hstack(hstack(panels[3], panels[4]), panels[5]);
 
@@ -181,8 +218,16 @@ static const std::string HTML = R"HTML(<!DOCTYPE html>
   input[type=range] { width:300px; }
   input[type=checkbox] { width:20px; height:20px; }
   span { width:40px; }
-  img { margin-top:16px; max-width:100%; border:1px solid #444; }
   .disabled { opacity: 0.4; pointer-events: none; }
+  
+  .pipeline-container { margin-top:24px; }
+  .pipeline-row { display:flex; gap:24px; margin-bottom:24px; justify-content:flex-start; }
+  .pipeline-step { display:flex; flex-direction:column; align-items:center; }
+  .step-label { 
+    color:#ffb347; font-weight:bold; font-size:13px; 
+    margin-bottom:8px; text-align:center; min-width:140px;
+  }
+  .step-image { border:2px solid #444; max-width:100%; }
 </style>
 </head>
 <body>
@@ -207,10 +252,10 @@ static const std::string HTML = R"HTML(<!DOCTYPE html>
   <span id="high_v">0.15</span></div>
 </div>
 
-<div style="color:#888;font-size:12px;margin-top:4px;">
-  [Gaussian] [Magnitude] [Orientation] / [NMS] [Threshold] [Hysteresis]
+<div class="pipeline-container">
+  <div style="color:#888; font-size:12px; margin-bottom:12px;">Pipeline Visualization:</div>
+  <img id="result" src="/result?radius=2&sigma10=14&low=5&high=15&auto=0" style="max-width:100%; border:1px solid #444;">
 </div>
-<img id="result" src="/result?radius=2&sigma10=14&low=5&high=15&auto=0">
 
 <script>
 let timer = null;
@@ -315,7 +360,7 @@ void runServer(const string& imgPath, int port)
         return;
     }
 
-    cv::Mat src = bgrToGrayManually(bgr);
+    cv::Mat src = bgr;
     ResultCache resultCache;
 
     ThreadPool pool(std::thread::hardware_concurrency());
