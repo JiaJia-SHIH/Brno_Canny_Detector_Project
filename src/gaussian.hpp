@@ -1,3 +1,9 @@
+/**
+ * @file gaussian.hpp
+ * @author SHIH YUE JIA (xshihyu00)
+ * @brief Custom implementation of Gaussian Blur. OpenMP parallelization is used to improve performance.
+ **/
+
 #pragma once
 #include <vector>
 #include <opencv2/opencv.hpp>

@@ -1,7 +1,14 @@
+/**
+ * @file gradient.cpp
+ * @author SHIH YUE JIA (xshihyu00)
+ * @brief Sobel operator for gradient magnitude and orientation
+ **/
+
 #include "gradient.hpp"
 #include <cmath>
 #include <omp.h>
 
+// Sobel Operator to gradient computation
 GradientResult computeGradient(const cv::Mat& blurred)
 {
     int rows = blurred.rows;
@@ -13,6 +20,7 @@ GradientResult computeGradient(const cv::Mat& blurred)
     result.magnitude = cv::Mat::zeros(rows, cols, CV_32F);
     result.orientation = cv::Mat::zeros(rows, cols, CV_32F);
     
+    // [Parallel Area]
     #pragma omp parallel for
     for(int i = 1; i < rows-1; i++)
     {

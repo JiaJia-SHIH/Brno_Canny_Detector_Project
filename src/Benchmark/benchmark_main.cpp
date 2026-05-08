@@ -1,3 +1,9 @@
+/**
+ * @file benchmark_main.cpp
+ * @author SHIH YUE JIA (xshihyu00)
+ * @brief Entry point for benchmarking
+ **/
+
 #include "Benchmark/benchmark.hpp"
 #include <iostream>
 

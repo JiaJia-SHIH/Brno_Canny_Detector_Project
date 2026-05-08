@@ -1,38 +1,26 @@
 /**
  * @file gaussian.cpp
  * @author SHIH YUE JIA (xshihyu00)
- * @brief Custom implementation of Gaussian Blur using separable convolution
- * 
- * ASSIGNMENT: Canny Edge Detection Implementation
- * COURSE: Image Processing in English
- * INSTITUTION: Brno of Technology
- * 
- * This file implements the Gaussian blur preprocessing stage of the Canny
- * edge detection algorithm. It uses separable convolution (horizontal + vertical)
- * for efficiency, avoiding the full 2D kernel multiplication.
- * 
- * OpenMP parallelization is used for row-wise operations to improve performance
- * on multi-core systems.
- *
- *
- * Tiling is used to solve cache thrashing problem, which can reduce Cache Miss 
- * problem when the input image size is large.
- */
+ * @brief Custom implementation of Gaussian Blur. OpenMP parallelization is used to improve performance.
+ **/
 
 
 #include "gaussian.hpp"
 #include <cmath>
 #include <omp.h>
 
-const int TILE_SIZE = 64; // Tile size
+using namespace std;
 
-// 1D kernel
-std::vector<float> makeGaussianKernel(int radius, float sigma)
+const int TILE_SIZE = 64; // Tiling size
+
+// 1D kernel to save time
+vector<float> makeGaussianKernel(int radius, float sigma)
 {
-    int size = 2*radius + 1;
-    std::vector<float> kernel(size);
+    int size = 2 * radius + 1;
+    vector<float> kernel(size);
     float sum = 0.0f;
 
+    // kernel creation
     for(int i = 0; i < size; i++)
     {
         int x = i - radius;
@@ -49,18 +37,20 @@ std::vector<float> makeGaussianKernel(int radius, float sigma)
 }
 
 // Convolution - horizontal
-static cv::Mat convolveH(const cv::Mat& src, const std::vector<float>& kernel)
+static cv::Mat convolveH(const cv::Mat& src, const vector<float>& kernel)
 {
     int radius = kernel.size() / 2;
-    cv::Mat dst = cv::Mat::zeros(src.size(), CV_32F); // to store the accumulated results
+    cv::Mat dst = cv::Mat::zeros(src.size(), CV_32F);
 
+    // [Parallel Area]
+    // [Tilig Area] use tiling to avoid cache thrashing 
     #pragma omp parallel for collapse(2)
     for(int ty = 0; ty < src.rows; ty += TILE_SIZE)
     {
         for(int tx = 0; tx < src.cols; tx += TILE_SIZE)
         {
-            int y_end = std::min(ty + TILE_SIZE, src.rows);
-            int x_end = std::min(tx + TILE_SIZE, src.cols);
+            int y_end = min(ty + TILE_SIZE, src.rows);
+            int x_end = min(tx + TILE_SIZE, src.cols);
             
             for(int y = ty; y < y_end; y++)
             {
@@ -69,7 +59,7 @@ static cv::Mat convolveH(const cv::Mat& src, const std::vector<float>& kernel)
                     float sum = 0.0f;
                     for(int offset = -radius; offset <= radius; offset++)
                     {
-                        int nx = std::clamp(x + offset, 0, src.cols - 1); // handle borders
+                        int nx = clamp(x + offset, 0, src.cols - 1);
                         sum += src.at<float>(y, nx) * kernel[offset + radius];
                     }
                     dst.at<float>(y, x) = sum;
@@ -80,18 +70,21 @@ static cv::Mat convolveH(const cv::Mat& src, const std::vector<float>& kernel)
     return dst;
 }
 
-static cv::Mat convolveV(const cv::Mat& src, const std::vector<float>& kernel)
+// Convolution - Vertical
+static cv::Mat convolveV(const cv::Mat& src, const vector<float>& kernel)
 {
     int radius = kernel.size() / 2;
     cv::Mat dst = cv::Mat::zeros(src.size(), CV_32F);
 
+    // [Parallel Area]
+    // [Tilig Area] use tiling to avoid cache thrashing 
     #pragma omp parallel for collapse(2)
     for(int ty = 0; ty < src.rows; ty += TILE_SIZE)
     {
         for(int tx = 0; tx < src.cols; tx += TILE_SIZE)
         {
-            int y_end = std::min(ty + TILE_SIZE, src.rows);
-            int x_end = std::min(tx + TILE_SIZE, src.cols);
+            int y_end = min(ty + TILE_SIZE, src.rows);
+            int x_end = min(tx + TILE_SIZE, src.cols);
             
             for(int y = ty; y < y_end; y++)
             {
@@ -100,7 +93,7 @@ static cv::Mat convolveV(const cv::Mat& src, const std::vector<float>& kernel)
                     float sum = 0.0f;
                     for(int offset = -radius; offset <= radius; offset++)
                     {
-                        int ny = std::clamp(y + offset, 0, src.rows - 1);
+                        int ny = clamp(y + offset, 0, src.rows - 1);
 
                         sum += src.at<float>(ny, x) * kernel[offset + radius];
                     }
@@ -112,7 +105,7 @@ static cv::Mat convolveV(const cv::Mat& src, const std::vector<float>& kernel)
     return dst;
 }
 
-
+// implemente Gaussian Blur
 cv::Mat gaussianBlur(const cv::Mat& gray, int radius, float sigma)
 {
     cv::Mat src32;

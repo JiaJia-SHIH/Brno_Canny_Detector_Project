@@ -1,3 +1,9 @@
+/**
+ * @file evaluate.hpp
+ * @author SHIH YUE JIA (xshihyu00)
+ * @brief BSDS500 dataset evaluator with precision/recall/F1
+ **/
+
 #pragma once
 #include <string>
 #include <vector>

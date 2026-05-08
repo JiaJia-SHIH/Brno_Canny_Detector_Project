@@ -1,3 +1,9 @@
+/**
+ * @file evaluate_main.cpp
+ * @author SHIH YUE JIA (xshihyu00)
+ * @brief Entry pint for BSDS500 evaluation
+ **/
+
 #include "Evaluation/evaluate.hpp"
 #include <iostream>
 

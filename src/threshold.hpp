@@ -1,3 +1,9 @@
+/**
+ * @file threshold.hpp
+ * @author SHIH YUE JIA (xshihyu00)
+ * @brief Double thresholding (manually and auto percentile)
+ **/
+
 #pragma once
 #include <opencv2/opencv.hpp>
 

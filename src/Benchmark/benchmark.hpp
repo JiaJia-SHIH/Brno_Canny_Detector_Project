@@ -1,3 +1,10 @@
+/**
+ * @file benchmark.hpp
+ * @author SHIH YUE JIA (xshihyu00)
+ * @brief Performance benchmarking across thread counts and images size 
+ * (one-thread vs parallel threads vs opencv built-in)
+ **/
+
 #pragma once
 #include <opencv2/opencv.hpp>
 #include <string>
@@ -10,8 +17,8 @@ struct BenchmarkConfig
 {
     string bsds500_path;
     vector<string> test_images; // list of the testing name
-    vector<int> scale_factors; // ex: 1x, 2x, 4x, ...
-    vector<int> thread_counts;
+    vector<int> scale_factors; // ex: 1x, 2x, ...
+    vector<int> thread_counts; // one thread, 2 threads, ...
     int num_runs; // to avoid single decision
 
     // fixed parameters

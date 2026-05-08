@@ -1,7 +1,14 @@
+/**
+ * @file nms.cpp
+ * @author SHIH YUE JIA (xshihyu00)
+ * @brief Non-maximum suppression to thin the edges
+ **/
+
 #include "nms.hpp"
 #include <cmath>
 #include <omp.h>
 
+// extract one pixel edge (find local maximum)
 cv::Mat nonMaximumSuppression(const GradientResult& gradient) 
 {
     const cv::Mat& magnitude = gradient.magnitude;
@@ -11,6 +18,7 @@ cv::Mat nonMaximumSuppression(const GradientResult& gradient)
 
     cv::Mat dst = cv::Mat::zeros(rows, cols, CV_32F);
 
+    // [Praralle Area]
     #pragma omp parallel for
     for(int j = 0; j < rows; j++)
     {

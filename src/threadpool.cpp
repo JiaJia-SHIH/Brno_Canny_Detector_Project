@@ -1,7 +1,14 @@
+/**
+ * @file threadpool.cpp
+ * @author SHIH YUE JIA (xshihyu00)
+ * @brief Thread pool implementation for concurrent request handling
+ **/
+
 #include "threadpool.hpp"
 
 using namespace std;
 
+// to handle multi-request on server
 ThreadPool::ThreadPool(int numThreads) : stop(false)
 {
     for(int i = 0; i < numThreads; i++)
@@ -14,16 +21,15 @@ ThreadPool::ThreadPool(int numThreads) : stop(false)
                 {
                     unique_lock<mutex> lock(queueMutex);
 
-                    // 如果還有任務、或者確定要stop，就可以過
+                    // continue if stop or some tasks in queue
                     cv.wait(lock, [this](){
                         return !taskQueue.empty() || stop;
                     });
 
-                    // 如果沒有stop的情況下，會出現沒有任務，但stop是true，要停了！但因為裡面沒有任務，所以卡在這裡-->永遠睡著
-
-
+                    // if the whole working flow is to be stopped , also there is no task in queue, finished safely
                     if(stop && taskQueue.empty()) break;
 
+                    // if stop but there still have some task need to be done, do it first
                     if(!taskQueue.empty())
                     {
                         task = move(taskQueue.front());
@@ -31,6 +37,7 @@ ThreadPool::ThreadPool(int numThreads) : stop(false)
                     }
                 }
 
+                // do task
                 if(task) task();
 
             }
@@ -38,21 +45,26 @@ ThreadPool::ThreadPool(int numThreads) : stop(false)
     }
 }
 
+// deconstructor
 ThreadPool::~ThreadPool()
 {
+    // avoid race condition
     {
         unique_lock<mutex> lock(queueMutex);
         stop = true;
     }
 
+    // call workers to check the tasks are done or not
     cv.notify_all();
 
+    // wait all the workers finishing there job
     for(auto& worker : workers)
     {
         worker.join();
     }
 }
 
+// add tasks to queue
 void ThreadPool::enqueue(function<void()> task)
 {
     {
@@ -61,5 +73,6 @@ void ThreadPool::enqueue(function<void()> task)
         taskQueue.push(move(task));
     }
 
+    // call one worker to do
     cv.notify_one();
 }

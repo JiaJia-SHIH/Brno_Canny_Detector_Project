@@ -1,6 +1,13 @@
+/**
+ * @file hysteresis.cpp
+ * @author SHIH YUE JIA (xshihyu00)
+ * @brief Hysteresis edge tracking by BFS
+ **/
+
 #include "hysteresis.hpp"
 #include <queue>
 
+// find the STRONG edges from WEAK edges by using BFS
 cv::Mat hysteresisTracking(const cv::Mat& thresholded)
 {
     int rows = thresholded.rows;
@@ -21,6 +28,7 @@ cv::Mat hysteresisTracking(const cv::Mat& thresholded)
         }
     }
 
+    // pre-define the surrounding pixel index
     const int di[8] = {-1, 0, 1, -1, 1, -1, 0, 1};
     const int dj[8] = {1, 1, 1, 0, 0, -1, -1, -1};
 

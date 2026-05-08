@@ -1,3 +1,10 @@
+/**
+ * @file benchmark.cpp
+ * @author SHIH YUE JIA (xshihyu00)
+ * @brief Performance benchmarking across thread counts and images size 
+ * (one-thread vs parallel threads vs opencv built-in)
+ **/
+
 #include <opencv2/opencv.hpp>
 #include <iostream>
 #include <chrono>
@@ -37,8 +44,7 @@ void BenchmarkRunner::loadTestImages()
             }
         }
 
-        // Limit to firat 10 images for reasonable benchmark time
-
+        // Limit to first 10 images for reasonable benchmark time
         sort(config_.test_images.begin(), config_.test_images.end());
         if(config_.test_images.size() > 10)
         {
@@ -67,6 +73,7 @@ void BenchmarkRunner::loadTestImages()
     cout << "Total images loaded: " << test_images_.size() << endl;
 }
 
+// implement one-thread pipeline
 BenchmarkResult BenchmarkRunner::benchmarkSerial(const cv::Mat& img, const string& img_name)
 {
     BenchmarkResult result;
@@ -105,6 +112,7 @@ BenchmarkResult BenchmarkRunner::benchmarkSerial(const cv::Mat& img, const strin
     return result;
 }
 
+// implement multi-threading pipeline
 BenchmarkResult BenchmarkRunner::benchmarkParallel(const cv::Mat& img, const string& img_name, int num_threads)
 {
     BenchmarkResult result;
@@ -123,6 +131,7 @@ BenchmarkResult BenchmarkRunner::benchmarkParallel(const cv::Mat& img, const str
     #ifdef _OPENMP
     omp_set_num_threads(num_threads);
     int actual_threads = 0;
+
     #pragma omp parallel
     {
         #pragma omp single
@@ -163,6 +172,7 @@ BenchmarkResult BenchmarkRunner::benchmarkParallel(const cv::Mat& img, const str
     return result;
 }
 
+// openCV built-in functions 
 BenchmarkResult BenchmarkRunner::benchmarkOpenCV(const cv::Mat& img, const string& img_name)
 {
     BenchmarkResult result;
@@ -177,11 +187,10 @@ BenchmarkResult BenchmarkRunner::benchmarkOpenCV(const cv::Mat& img, const strin
     result.low_ratio = config_.low_ratio;
     result.high_ratio = config_.high_ratio;
 
-
+    // canny pipeline
     auto pipeline = [&](){
         cv::Mat blurred, edges;
 
-        // OpenCV blurred
         int ksize = 2 * config_.radius + 1;
         cv::GaussianBlur(img, blurred, cv::Size(ksize, ksize), config_.sigma);
         double maxVal = 255.0;
@@ -197,11 +206,20 @@ BenchmarkResult BenchmarkRunner::benchmarkOpenCV(const cv::Mat& img, const strin
     return result;
 }
 
+// to measure time fairly
 template<typename Func>
 double BenchmarkRunner::measureTime(Func func, int num_runs)
 {
+    // CPU warm-up
+    const int warmup_runs = 2;
+    for(int i = 0; i < warmup_runs; i++)
+    {
+        func();
+    }
+
     vector<double> times;
 
+    // benchmark framework
     for(int i = 0; i < num_runs; i++)
     {
         auto start = chrono::high_resolution_clock::now();
@@ -218,6 +236,7 @@ double BenchmarkRunner::measureTime(Func func, int num_runs)
     return times[num_runs/2];
 }
 
+// run all methods and images
 vector<BenchmarkResult> BenchmarkRunner::runAll()
 {
     vector<BenchmarkResult> results;
@@ -302,6 +321,7 @@ vector<BenchmarkResult> BenchmarkRunner::runAll()
     return results;
 }
 
+// save the comparison results
 void BenchmarkRunner::saveResultsToCSV(const vector<BenchmarkResult>& results, const string& filename)
 {
     ofstream file(filename);

@@ -1,3 +1,9 @@
+/**
+ * @file utils.cpp
+ * @author SHIH YUE JIA (xshihyu00)
+ * @brief Utility Functions for image conversion and visualization (to avoid using some OpenCV functions)
+ **/
+
 #include "utils.hpp"
 #include <algorithm>
 

@@ -1,3 +1,9 @@
+/**
+ * @file main.cpp
+ * @author SHIH YUE JIA (xshihyu00)
+ * @brief Main entry point for Canny pipeline
+ **/
+
 #include <opencv2/opencv.hpp>
 #include <iostream>
 #include "utils.hpp"

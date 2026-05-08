@@ -1,3 +1,9 @@
+/**
+ * @file server.cpp
+ * @author SHIH YUE JIA (xshihyu00)
+ * @brief HTTP server for interactive Canny parameter tuning
+ **/
+
 #include "server.hpp"
 #include "threadpool.hpp"
 #include "gaussian.hpp"
@@ -21,16 +27,19 @@
 
 using namespace std;
 
+// to avoid one computed image to compute again
 struct ResultCache {
     std::unordered_map<std::string, std::vector<uchar>> cache;
     std::mutex cacheMutex;
     
+    // store the result from each stage
     std::string makeKey(int radius, float sigma, float lowR, float highR, bool useAuto) {
         return std::to_string(radius) + "_" + std::to_string(sigma) + "_" + 
                std::to_string(lowR) + "_" + std::to_string(highR) + "_" +
                std::to_string(useAuto);
     }
     
+    // get computed results
     bool get(const std::string& key, std::vector<uchar>& result) {
         std::lock_guard<std::mutex> lock(cacheMutex);
         auto it = cache.find(key);
@@ -41,6 +50,7 @@ struct ResultCache {
         return false;
     }
     
+    // push a new results
     void set(const std::string& key, const std::vector<uchar>& data) {
         std::lock_guard<std::mutex> lock(cacheMutex);
         cache[key] = data;
@@ -73,7 +83,7 @@ static int get(const map<string, int>& m, const string& k, int def)
     return (it != m.end()) ? it->second : def;
 }
 
-// utils: combine two images
+// utils: combine two images in horizontal direction
 static cv::Mat hstack(const cv::Mat& a, const cv::Mat& b)
 {
     cv::Mat out(a.rows, a.cols + b.cols, CV_8UC3, cv::Scalar(0));
@@ -91,6 +101,7 @@ static cv::Mat hstack(const cv::Mat& a, const cv::Mat& b)
     return out;
 }
 
+// utils: combine two images in vertical direction
 static cv::Mat vstack(const cv::Mat& a, const cv::Mat& b)
 {
     cv::Mat out(a.rows+b.rows, a.cols, CV_8UC3, cv::Scalar());
@@ -113,6 +124,7 @@ static cv::Mat toColor(const cv::Mat& g8)
     return grayToBgrManually(g8);
 }
 
+// to present the different edge more obviously
 static cv::Mat threshColor(const cv::Mat& t)
 {
     cv::Mat out(t.size(), CV_8UC3);
@@ -129,6 +141,7 @@ static cv::Mat threshColor(const cv::Mat& t)
     return out;
 }
 
+// show the labels for each stage
 static void addLabel(cv::Mat& img, const std::string& label)
 {
     int baseline = 0;
@@ -363,6 +376,7 @@ void runServer(const string& imgPath, int port)
     cv::Mat src = bgr;
     ResultCache resultCache;
 
+    // to process multi-request
     ThreadPool pool(std::thread::hardware_concurrency());
 
     int server_fd = socket(AF_INET, SOCK_STREAM, 0);
@@ -379,6 +393,7 @@ void runServer(const string& imgPath, int port)
     cout << "Server running at http://localhost:" << port << "\n";
     cout << "Using " << std::thread::hardware_concurrency() << " worker threads\n";
     
+    // receive the request util stopping manually
     while(true)
     {
         int client = accept(server_fd, nullptr, nullptr);
@@ -445,6 +460,8 @@ void runServer(const string& imgPath, int port)
 
                 int radius = get(params, "radius", 2);
                 float sigma = get(params, "sigma10", 14) / 10.0f;
+
+                // if use auto thresholding
                 bool useAuto = (get(params, "auto", 0) == 1);
 
                 string jsonResponse;
@@ -457,6 +474,7 @@ void runServer(const string& imgPath, int port)
                     
                     auto [autoLow, autoHigh] = getAutoThresholdValues(nms);
                     
+                    // avoid out of range
                     float maxVal = 0.0f;
                     for(int i = 0; i < nms.rows; i++)
                     {

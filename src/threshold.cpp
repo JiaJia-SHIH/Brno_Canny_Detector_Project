@@ -1,3 +1,9 @@
+/**
+ * @file threshold.cpp
+ * @author SHIH YUE JIA (xshihyu00)
+ * @brief Double thresholding (manually and auto percentile)
+ **/
+
 #include "threshold.hpp"
 #include <algorithm>
 #include <vector>
@@ -5,10 +11,13 @@
 
 using namespace std;
 
+// standard method to filt edges
 cv::Mat doubleThreshold(const cv::Mat& nms, float lowRatio, float highRatio)
 {
     // adaptively find the maximum value in the nms image
     float maxVal = 0.0f;
+
+    // [Parallel Area]
     #pragma omp parallel for reduction(max:maxVal)
     for(int i = 0; i < nms.rows; i++)
     {
@@ -23,6 +32,7 @@ cv::Mat doubleThreshold(const cv::Mat& nms, float lowRatio, float highRatio)
 
     cv::Mat dst = cv::Mat::zeros(nms.size(), CV_8U);
 
+    // [Parallel Area]
     #pragma omp parallel for
     for(int i = 0; i < nms.rows; i++)
     {
@@ -42,6 +52,7 @@ cv::Mat doubleThreshold(const cv::Mat& nms, float lowRatio, float highRatio)
     return dst;
 }
 
+// tool for auto-thresholding
 static float computePercentile(const cv::Mat& nms, float percentile)
 {
     // collect all non-zero gradient value
@@ -80,6 +91,7 @@ pair<float, float> getAutoThresholdValues(const cv::Mat& nms)
     return {lowThreshold, highThreshold};
 }
 
+// auto thresholding pipeline
 cv::Mat autoThreshold(const cv::Mat& nms)
 {
     auto[lowThreshold, highThreshold] = getAutoThresholdValues(nms);

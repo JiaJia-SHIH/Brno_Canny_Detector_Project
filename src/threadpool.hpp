@@ -1,3 +1,9 @@
+/**
+ * @file threadpool.hpp
+ * @author SHIH YUE JIA (xshihyu00)
+ * @brief Thread pool implementation for concurrent request handling
+ **/
+
 #pragma once
 #include <thread>
 #include <condition_variable>
