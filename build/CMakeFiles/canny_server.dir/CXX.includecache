@@ -6,14 +6,36 @@
 
 #IncludeRegexTransform: 
 
+/data/BrnoCannyProject/canny_project/src/gaussian.cpp
+gaussian.hpp
+/data/BrnoCannyProject/canny_project/src/gaussian.hpp
+cmath
+-
+omp.h
+-
+
 /data/BrnoCannyProject/canny_project/src/gaussian.hpp
 vector
 -
 opencv2/opencv.hpp
 -
 
+/data/BrnoCannyProject/canny_project/src/gradient.cpp
+gradient.hpp
+/data/BrnoCannyProject/canny_project/src/gradient.hpp
+cmath
+-
+omp.h
+-
+
 /data/BrnoCannyProject/canny_project/src/gradient.hpp
 opencv2/core.hpp
+-
+
+/data/BrnoCannyProject/canny_project/src/hysteresis.cpp
+hysteresis.hpp
+/data/BrnoCannyProject/canny_project/src/hysteresis.hpp
+queue
 -
 
 /data/BrnoCannyProject/canny_project/src/hysteresis.hpp
@@ -21,6 +43,34 @@ opencv2/opencv.hpp
 -
 threshold.hpp
 /data/BrnoCannyProject/canny_project/src/threshold.hpp
+
+/data/BrnoCannyProject/canny_project/src/main.cpp
+opencv2/opencv.hpp
+-
+iostream
+-
+utils.hpp
+/data/BrnoCannyProject/canny_project/src/utils.hpp
+gaussian.hpp
+/data/BrnoCannyProject/canny_project/src/gaussian.hpp
+gradient.hpp
+/data/BrnoCannyProject/canny_project/src/gradient.hpp
+nms.hpp
+/data/BrnoCannyProject/canny_project/src/nms.hpp
+threshold.hpp
+/data/BrnoCannyProject/canny_project/src/threshold.hpp
+hysteresis.hpp
+/data/BrnoCannyProject/canny_project/src/hysteresis.hpp
+server.hpp
+/data/BrnoCannyProject/canny_project/src/server.hpp
+
+/data/BrnoCannyProject/canny_project/src/nms.cpp
+nms.hpp
+/data/BrnoCannyProject/canny_project/src/nms.hpp
+cmath
+-
+omp.h
+-
 
 /data/BrnoCannyProject/canny_project/src/nms.hpp
 opencv2/opencv.hpp
@@ -72,6 +122,10 @@ string
 opencv2/core.hpp
 -
 
+/data/BrnoCannyProject/canny_project/src/threadpool.cpp
+threadpool.hpp
+/data/BrnoCannyProject/canny_project/src/threadpool.hpp
+
 /data/BrnoCannyProject/canny_project/src/threadpool.hpp
 thread
 -
@@ -86,8 +140,24 @@ vector
 functional
 -
 
+/data/BrnoCannyProject/canny_project/src/threshold.cpp
+threshold.hpp
+/data/BrnoCannyProject/canny_project/src/threshold.hpp
+algorithm
+-
+vector
+-
+omp.h
+-
+
 /data/BrnoCannyProject/canny_project/src/threshold.hpp
 opencv2/opencv.hpp
+-
+
+/data/BrnoCannyProject/canny_project/src/utils.cpp
+utils.hpp
+/data/BrnoCannyProject/canny_project/src/utils.hpp
+algorithm
 -
 
 /data/BrnoCannyProject/canny_project/src/utils.hpp

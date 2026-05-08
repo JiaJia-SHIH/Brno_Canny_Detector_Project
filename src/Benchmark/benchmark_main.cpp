@@ -56,7 +56,7 @@ int main(int argc, char** argv)
     auto results = runner.runAll();
 
     // save Results
-    string output_file = "../benchmark_results/benchmark_results.csv";
+    string output_file = "../eval/benchmark_results.csv";
     runner.saveResultsToCSV(results, output_file);
 
     cout << std::endl;
